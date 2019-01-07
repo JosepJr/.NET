@@ -1,0 +1,18 @@
+﻿#tabuleiro {
+    background-color: green;
+
+
+}
+
+.quadrante {
+    border: 2px solid yellow;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+
+}
+
+label {
+    font: bold 100px arial;
+}
+

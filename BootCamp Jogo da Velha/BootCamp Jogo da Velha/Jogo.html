@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>  
+    <link href="Jogo.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div id="tabuleiro">
+        <div class="row">
+            <div id="p_0_0" class="quadrante"><label>&nbsp;</label></div>
+            <div id="p_0_1" class="quadrante"><label>&nbsp;</label></div>
+            <div id="p_0_2" class="quadrante"><label>&nbsp;</label></div>
+        </div>
+        <div class="row">
+            <div id="p_1_0" class="quadrante"><label>&nbsp;</label></div>
+            <div id="p_1_1" class="quadrante"><label>&nbsp;</label></div>
+            <div id="p_1_2" class="quadrante"><label>&nbsp;</label></div>
+        </div>
+        <div class="row">
+            <div id="p_2_0" class="quadrante"><label>&nbsp;</label></div>
+            <div id="p_2_1" class="quadrante"><label>&nbsp;</label></div>
+            <div id="p_2_2" class="quadrante"><label>&nbsp;</label></div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script src="jquery-3.3.1.js"></script>
+<script src="Jogador.js"></script>
+<script src="Tabuleiro.js"></script>
+
+<script>
+    var jogadorVez = 0;
+    var t = new Tabuleiro();
+    var jogadores = new Array(2);
+    jogadores[0] = new Jogador("X", "blue");
+    jogadores[1] = new Jogador("O", "red");
+
+    $(document).ready(function () {
+        $("quadrante").bind("click", marcar);
+    });
+
+    function marcar() {
+        var label = $(this).find("label");
+        var posicoes = label.prop("id").split("_");
+
+        label.text(jogadores[jogadorVez].simbolo);
+        label.css("color", jogadores[jogadorVez].cor);
+
+        t.adicionarJogada(posicoes[1], posicoes[2], jogadores[jogadorVez]);
+
+        jogadorVez = + !jogadorVez;
+    }
+
+
+
+
+</script>
